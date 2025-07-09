@@ -53,7 +53,7 @@
             <td> 4</td>
             <td>X</td>
             </tr>
-
+          </tbody>
           </table>
         </div>
 
