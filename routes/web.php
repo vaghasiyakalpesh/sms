@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\FeeHeadController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,6 +34,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('table', [AdminController::class, 'table'])
             ->name('admin.table');
+
         // Academic Year Routes
         Route::group(['prefix' => 'academic-year'], function () {
 
@@ -58,6 +60,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::group(['prefix' => 'class'], function () {
             Route::get('create', [ClassesController::class, 'create'])
                 ->name('class.create');
+
             Route::post('store', [ClassesController::class, 'store'])
                 ->name('class.store');
 
@@ -72,6 +75,27 @@ Route::group(['prefix' => 'admin'], function () {
 
             Route::post('update', [ClassesController::class, 'update'])
                 ->name('class.update');
+        });
+
+        // Fee Head Routes
+        Route::group(['prefix' => 'fee-head'], function () {
+            Route::get('create', [FeeHeadController::class, 'create'])
+                ->name('fee-head.create');
+
+            Route::post('store', [FeeHeadController::class, 'store'])
+                ->name('fee-head.store');
+
+            Route::get('index', [FeeHeadController::class, 'index'])
+                ->name('fee-head.index');
+
+            Route::get('delete/{id}', [FeeHeadController::class, 'destroy'])
+                ->name('fee-head.delete');
+
+            Route::get('edit/{id}', [FeeHeadController::class, 'edit'])
+                ->name('fee-head.edit');
+
+            Route::post('update', [FeeHeadController::class, 'update'])
+                ->name('fee-head.update');
         });
 
     });
