@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,7 +33,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('table', [AdminController::class, 'table'])
             ->name('admin.table');
-
+        // Academic Year Routes
         Route::group(['prefix' => 'academic-year'], function () {
 
             Route::get('create', [AcademicYearController::class, 'create'])
@@ -51,6 +52,26 @@ Route::group(['prefix' => 'admin'], function () {
                 ->name('academic-year.edit');
 
             Route::post('update', [AcademicYearController::class, 'update'])->name('academic-year.update');
+        });
+
+        // Class Routes
+        Route::group(['prefix' => 'class'], function () {
+            Route::get('create', [ClassesController::class, 'create'])
+                ->name('class.create');
+            Route::post('store', [ClassesController::class, 'store'])
+                ->name('class.store');
+
+            Route::get('index', [ClassesController::class, 'index'])
+                ->name('class.index');
+
+            Route::get('delete/{id}', [ClassesController::class, 'destroy'])
+                ->name('class.delete');
+
+            Route::get('edit/{id}', [ClassesController::class, 'edit'])
+                ->name('class.edit');
+
+            Route::post('update', [ClassesController::class, 'update'])
+                ->name('class.update');
         });
 
     });
