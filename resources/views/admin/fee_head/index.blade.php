@@ -50,17 +50,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($fee_heads as $fee_head)
+                                        @foreach ($feeHeads as $feeHead)
                                             <tr>
-                                                <td>{{ $fee_head->id }}</td>
-                                                <td>{{ $fee_head->name }}</td>
-                                                <td>{{ $fee_head->created_at->format('d:m:y') }}</td>
+                                                <td>{{ $feeHead->id }}</td>
+                                                <td>{{ $feeHead->name }}</td>
+                                                <td>{{ $feeHead->created_at->format('d:m:y') }}</td>
                                                 <td>
-                                                    <a href="{{ route('fee-head.edit', $fee_head->id) }}"
+                                                    <a href="{{ route('fee-head.edit', $feeHead->id) }}"
                                                         class="btn btn-primary">Edit</a>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('fee-head.delete', $fee_head->id) }}"
+                                                    <a href="{{ route('fee-head.delete', $feeHead->id) }}"
                                                         class="btn btn-danger">Delete</a>
                                                 </td>
                                             </tr>

@@ -36,10 +36,10 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <input type="hidden" name="id" value="{{ $fee_head->id }}">
+                                        <input type="hidden" name="id" value="{{ $feeHead->id }}">
                                         <label for="academic-year">Fee Head</label>
                                         <input type="text" name="name" class="form-control" id="class"
-                                            placeholder="Enter Class" value="{{ old('name', $fee_head->name) }}">
+                                            placeholder="Enter Class" value="{{ old('name', $feeHead->name) }}">
                                     </div>
                                     @error('name')
                                         <div class="alert alert-danger">{{ $message }}</div>

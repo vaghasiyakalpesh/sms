@@ -9,8 +9,8 @@ class FeeHeadController extends Controller
 {
     public function index()
     {
-        $fee_heads = FeeHead::all();
-        return view('admin.fee_head.index', compact('fee_heads'));
+        $feeHeads = FeeHead::all();
+        return view('admin.fee_head.index', compact('feeHeads'));
     }
     public function create()
     {
@@ -22,16 +22,16 @@ class FeeHeadController extends Controller
         $request->validate([
             'name' => 'required|string|unique:fee_heads,name',
         ]);
-        $fee_head = new FeeHead();
-        $fee_head->name = $request->name;
-        $fee_head->save();
+        $feeHead = new FeeHead();
+        $feeHead->name = $request->name;
+        $feeHead->save();
         return redirect()->route('fee-head.index')->with('success', 'Fee Head created successfully.');
     }
 
     public function edit($id)
     {
-        $fee_head = FeeHead::findOrFail($id);
-        return view('admin.fee_head.edit', compact('fee_head'));
+        $feeHead = FeeHead::findOrFail($id);
+        return view('admin.fee_head.edit', compact('feeHead'));
     }
 
     public function update(Request $request)
@@ -41,17 +41,17 @@ class FeeHeadController extends Controller
             'name' => 'required|string|unique:fee_heads,name,' . $request->id,
         ]);
 
-        $fee_head = FeeHead::findOrFail($request->id);
-        $fee_head->name = $request->name;
-        $fee_head->save();
+        $feeHead = FeeHead::findOrFail($request->id);
+        $feeHead->name = $request->name;
+        $feeHead->save();
 
         return redirect()->route('fee-head.index')->with('success', 'Fee Head updated successfully.');
     }
 
     public function destroy($id)
     {
-        $fee_head = FeeHead::findOrFail($id);
-        $fee_head->delete();
+        $feeHead = FeeHead::findOrFail($id);
+        $feeHead->delete();
         return redirect()->route('fee-head.index')->with('success', 'Fee Head deleted successfully.');
     }
 }
