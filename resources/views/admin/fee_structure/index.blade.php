@@ -37,7 +37,42 @@
                             <div class="card-header">
                                 <h3 class="card-title">Fee Structure</h3>
                             </div>
+                            <div class="row m-2">
+                                <form action="" method="get"
+                                    class="w-100 d-flex justify-content-between align-items-center">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="class-id">Class</label>
+                                            <select class="form-control" name="class" id="class-id">
+                                                <option value="">Select Class</option>
+                                                @foreach ($classes as $class)
+                                                    <option value="{{ $class->id }}" {{ old('class', $class->id == request('class')) ? 'selected' : '' }}>
+                                                        {{$class->name}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
 
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="academic-year-id">Academic Year</label>
+                                            <select class="form-control" name="academic_year" id="academic-year-id">
+                                                <option value="">Select Academic Year</option>
+                                                @foreach ($academicYears as $academicYear)
+                                                    <option value="{{ $academicYear->id }}" {{old('academic_year', $academicYear->id == request('academic_year')) ? 'selected' : '' }}>
+                                                        {{$academicYear->name}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4 mt-3">
+                                        <button type="submit" class="btn btn-primary">Filter</button>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>

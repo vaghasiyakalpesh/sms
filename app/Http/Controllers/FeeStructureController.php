@@ -10,10 +10,25 @@ use Illuminate\Http\Request;
 
 class FeeStructureController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $feeStructures = FeeStructure::with(['feeHead', 'class', 'academicYear'])->get();
-        return view('admin.fee_structure.index', compact('feeStructures'));
+
+        $feeStructures = FeeStructure::query()->with(['feeHead', 'class', 'academicYear'])->latest();
+
+        if ($request->filled('class')) {
+            $feeStructures->where('class_id', $request->get('class'));
+        }
+
+        if ($request->filled('academic_year')) {
+            $feeStructures->where('academic_year_id', $request->get('academic_year'));
+        }
+
+        $feeStructures = $feeStructures->get();
+
+        $academicYears = AcademicYear::all();
+        $classes = Classes::all();
+
+        return view('admin.fee_structure.index', compact('feeStructures', 'academicYears', 'classes'));
     }
     public function create()
     {

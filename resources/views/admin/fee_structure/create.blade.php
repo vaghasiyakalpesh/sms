@@ -68,7 +68,7 @@
                                             <div class="form-group">
                                                 <label for="academic-year-id">Academic Year</label>
                                                 <select class="form-control" name="academic_year" id="academic-year-id">
-                                                    <option value="">Select Class</option>
+                                                    <option value="">Select Academic Year</option>
                                                     @foreach ($academicYears as $academicYear)
                                                         <option value="{{ $academicYear->id }}">{{$academicYear->name}}</option>
                                                     @endforeach
