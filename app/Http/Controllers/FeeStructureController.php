@@ -12,6 +12,10 @@ class FeeStructureController extends Controller
 {
     public function index(Request $request)
     {
+        $request->validate([
+            'class' => 'nullable|exists:classes,id',
+            'academic_year' => 'nullable|exists:academic_years,id',
+        ]);
 
         $feeStructures = FeeStructure::query()->with(['feeHead', 'class', 'academicYear'])->latest();
 
